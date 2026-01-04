@@ -1,5 +1,6 @@
 import 'package:expense_tracker/widgets/expenses_list/expenseList.dart';
 import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker/widgets/new_expenses.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
 
@@ -28,7 +29,7 @@ class _ExpenseState extends State<Expenses> {
   void _openaddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => const Text('Show open add expense over lay'),
+      builder: (ctx) => const NewExpenses(),
     );
   }
 
@@ -39,9 +40,7 @@ class _ExpenseState extends State<Expenses> {
         title: const Text('Flutter Expense Tracker'),
         actions: [
           IconButton(
-            onPressed: () {
-              return _openaddExpenseOverlay();
-            },
+            onPressed: () => _openaddExpenseOverlay(),
             icon: const Icon(Icons.add),
           ),
         ],
