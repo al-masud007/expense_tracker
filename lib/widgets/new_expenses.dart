@@ -1,8 +1,6 @@
 import 'package:expense_tracker/models/expense.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'dart:core';
-import 'package:uuid/uuid.dart';
 
 class NewExpenses extends StatefulWidget {
   const NewExpenses({super.key, required this.onAddExpense});
@@ -55,7 +53,7 @@ class _NewExpensesState extends State<NewExpenses> {
         builder: (ctx) => AlertDialog(
           title: const Text('Invalid Input'),
           content: const Text(
-              'Please make sure you entered a valid title, amount, date & category'),
+              'Please make sure you entered a valid title, amount, date & category 🤦‍♂️'),
           actions: [
             TextButton(
               onPressed: () {
