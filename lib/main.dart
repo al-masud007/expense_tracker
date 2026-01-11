@@ -22,6 +22,19 @@ void main() {
             vertical: 8,
           ),
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kdarkColorScheme.primaryContainer,
+            foregroundColor: kdarkColorScheme.onPrimaryContainer,
+          ),
+        ),
+        // textTheme: ThemeData().textTheme.copyWith(
+        //       titleLarge: TextStyle(
+        //         fontWeight: FontWeight.normal,
+        //         color: kColorScheme.onSecondaryContainer,
+        //         fontSize: 14,
+        //       ),
+        //     ),
       ),
       theme: ThemeData().copyWith(
         colorScheme: kColorScheme,
