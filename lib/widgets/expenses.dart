@@ -1,4 +1,4 @@
-import 'package:expense_tracker/widgets/chart.dart';
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenseList.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/widgets/new_expenses.dart';
@@ -29,6 +29,7 @@ class _ExpenseState extends State<Expenses> {
 
   void _openaddExpenseOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
       builder: (ctx) => NewExpenses(
@@ -69,6 +70,8 @@ class _ExpenseState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     Widget mainContent = const Center(
       child: Text('No Expenses found ✌️ . Try to add some!'),
     );
@@ -81,21 +84,27 @@ class _ExpenseState extends State<Expenses> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Expense Tracker'),
-        actions: [
-          IconButton(
-            onPressed: () => _openaddExpenseOverlay(),
-            icon: const Icon(Icons.add),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Chart(expenses: _registeredExpense),
-          Expanded(child: mainContent),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Flutter Expense Tracker'),
+          actions: [
+            IconButton(
+              onPressed: () => _openaddExpenseOverlay(),
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
+        body: width < 500
+            ? Column(
+                children: [
+                  Chart(expenses: _registeredExpense),
+                  Expanded(child: mainContent),
+                ],
+              )
+            : Row(
+                children: [
+                  Expanded(child: Chart(expenses: _registeredExpense)),
+                  Expanded(child: mainContent),
+                ],
+              ));
   }
 }
